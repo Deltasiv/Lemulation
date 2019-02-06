@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1549304262 source:/home/johk/cpp/Lemulation/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<string>
+	<sstream>
+
