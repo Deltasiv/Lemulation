@@ -117,8 +117,8 @@ FOR NAN ONLY
 ## Files Included 
 
 - [Lemulation](https://github.com/Deltasiv/Lemulation/tree/master/bin/Debug)
-- [CONTRIBUTIONS.md]()
-- [CONTRIBUTING.md]()
+- [CONTRIBUTIONS.md](https://github.com/Deltasiv/Lemulation/blob/master/CONTRIBUTIONS.md)
+- [CONTRIBUTORS.md](https://github.com/Deltasiv/Lemulation/blob/master/CONTRIBUOTRS.md)
 - [README.md](https://github.com/Deltasiv/Lemulation/blob/master/README.md)
 - [rocket.png](https://github.com/Deltasiv/Lemulation/blob/master/rocket.png)
 - [main.o](https://github.com/Deltasiv/Lemulation/blob/master/obj/Debug/main.o)
@@ -142,7 +142,7 @@ FOR NAN ONLY
 
 ## Contributing
 
-If you wish to help on this project you can simply make changes to the file and post your changes and if they are appreciated we will merge them to the Master branch. Please read the [CONTRIBUTING.md](https://github.com/YELLOWHATT/Comet/blob/master/CONTRIBUTORS.md) file for more information. If you have contributed to this work known as Darwin you will be credited the file for contributors is [CONTRIBUTIONS.md](https://github.com/YELLOWHATT/Comet/blob/master/CONTRIBUTIONS.md). :) 
+If you wish to help on this project you can simply make changes to the file and post your changes and if they are appreciated we will merge them to the Master branch. Please read the [CONTRIBUTORS.md](https://github.com/Deltasiv/Lemulation/blob/master/CONTRIBUTORS.md) file for more information. If you have contributed to this work known as Darwin you will be credited the file for contributors is [CONTRIBUTIONS.md](https://github.com/Deltasiv/Lemulation/blob/master/CONTRIBUTIONS.md). :) 
 
 --- 
 
