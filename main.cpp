@@ -8,7 +8,7 @@ int main()
     // Create the main window
     int width = 800;
     int height = 600;
-    sf::RenderWindow app(sf::VideoMode(width, height), "SFML window");
+    sf::RenderWindow app(sf::VideoMode(width, height), "Lemulation");
 
     // Load a sprite to display
     sf::Texture texture;
@@ -18,7 +18,7 @@ int main()
 
     double angle = 45;
     double positionX = 500;
-    double positionY = 200;
+    double positionY = 100;
 
     sf::Vector2f scale(sprite.getScale());
     sprite.setPosition(positionX, positionY);
@@ -34,6 +34,10 @@ int main()
 
     double speedX = 0.5;
     double speedY = 0.5;
+    double gravity = 0.1;
+    double friction = 0.90;
+
+    bool frictioncheck = false;
 
     std::string output = "X: " + std::to_string(rocket_x) + " Y: " + std::to_string(rocket_y);
     std::string outputscale = "X: " + std::to_string(rocket_sizex) + " Y: " + std::to_string(rocket_sizey);
@@ -51,6 +55,12 @@ int main()
             // Close window : exit
             if (event.type == sf::Event::Closed)
                 app.close();
+            if (event.type == sf::Event::Resized)
+            {
+                // update the view to the new size of the window
+                sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+                app.setView(sf::View(visibleArea));
+            }
         }
 
         // Animation & Physics
@@ -64,13 +74,30 @@ int main()
 //        angle += 0.1;
 //        sprite.setRotation(angle);
 //        sprite.setPosition(200, 200);
+        bool localfrictioncheck = false;
         if(positionX <= 40 + fixedangle || positionX >= width - 10){
         // Changing the velocity of the rocket as soon as it hits a corner
+            if(!frictioncheck){
+                speedX = -speedX * friction;
+                frictioncheck = true;
+            }
             speedX = -speedX;
+            localfrictioncheck = true;
         }
-        if(positionY <= 0 || positionY >= height - 100){
-            speedY = -speedY;
+        if(positionY <= 0 || positionY >= height - fixedangle){
+            if(!frictioncheck){
+                speedY = -speedY * friction;
+                frictioncheck = true;
+            }
+            localfrictioncheck = true;
+        }else{
+            speedY += gravity;
         }
+
+        if(!localfrictioncheck && frictioncheck){
+            frictioncheck = false;
+        }
+
         positionX += speedX;
         positionY += speedY;
         // Setting the new position of the space ship
@@ -82,7 +109,8 @@ int main()
         std::cout << output << "\n";
 
         // Clear screen
-        app.clear();
+        sf::Color backgroundcolor = sf::Color(224,224,224, 255);
+        app.clear(backgroundcolor);
 
         // Draw the sprite
         app.draw(sprite);
