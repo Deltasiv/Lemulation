@@ -79,7 +79,7 @@ int main()
         // Changing the velocity of the rocket as soon as it hits a corner
             if(!frictioncheck){
                 speedX = -speedX * friction;
-                frictioncheck = true;
+                // frictioncheck = true;
             }else{
                 speedX = -speedX;
             }
@@ -89,6 +89,7 @@ int main()
         if(positionY <= 0 || positionY >= height - 100){
             if(!frictioncheck){
                 speedY = -speedY * friction;
+                speedX = speedX * friction;
                 frictioncheck = true;
             }
             localfrictioncheck = true;
@@ -100,9 +101,10 @@ int main()
             frictioncheck = false;
         }
 
-        // This fixes the bug of the rocket going underground for some reason...
+        // This fixes the bug of the rocket going out of the screen for some reason...
         if(positionY >= height - 98){
             speedY = -speedY * friction;
+            speedX = -speedX * friction;
         }
 
         positionX += speedX;
