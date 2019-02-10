@@ -34,7 +34,7 @@ int main()
 
     double speedX = 0.5;
     double speedY = 0.5;
-    double gravity = 0.1;
+    double gravity = 0.01;
     double friction = 0.90;
 
     bool frictioncheck = false;
@@ -80,11 +80,13 @@ int main()
             if(!frictioncheck){
                 speedX = -speedX * friction;
                 frictioncheck = true;
+            }else{
+                speedX = -speedX;
             }
-            speedX = -speedX;
+            // speedX = -speedX;
             localfrictioncheck = true;
         }
-        if(positionY <= 0 || positionY >= height - fixedangle){
+        if(positionY <= 0 || positionY >= height - 100){
             if(!frictioncheck){
                 speedY = -speedY * friction;
                 frictioncheck = true;
@@ -98,6 +100,11 @@ int main()
             frictioncheck = false;
         }
 
+        // This fixes the bug of the rocket going underground for some reason...
+        if(positionY >= height - 98){
+            speedY = -speedY * friction;
+        }
+
         positionX += speedX;
         positionY += speedY;
         // Setting the new position of the space ship
@@ -106,7 +113,9 @@ int main()
         double rocket_x = rocket_position.x;
         double rocket_y = rocket_position.y;
         std::string output = "X: " + std::to_string(rocket_x) + " Y: " + std::to_string(rocket_y);
+        std::string output2 = "\nSpdX: " + std::to_string(speedX) + " SpdY: " + std::to_string(speedY);
         std::cout << output << "\n";
+        std::cout << output2 << "\n";
 
         // Clear screen
         sf::Color backgroundcolor = sf::Color(224,224,224, 255);
